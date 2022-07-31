@@ -1,0 +1,67 @@
+version: '2.1'
+services:
+
+  web:
+    build:
+      context: ""
+      dockerfile: Dockerfile
+      args:
+        hostUID: 1000
+        hostGID: 1000
+    image: sis-model-web
+    hostname: sis-model-web
+    container_name: sis-model-web
+    extra_hosts:
+      # Need for Xdebug and some callback to local
+      - "host.docker.internal:host-gateway"
+    labels:
+      SERVICE_NAME: sis-model-web
+      SERVICE_8000_NAME: sis-model-web
+      SERVICE_sis-user-service_NAME: sis-model-web
+    ports:
+      - '8123:8123'
+    environment:
+      APP_ENV: local
+      PHP_IDE_CONFIG: serverName=sis-model-web.service.docker
+    volumes:
+      - ../../:/home/www/app
+      # Override xdebug.ini in docker instance
+      #- ./customize/usr/local/etc/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+
+#  db:
+#    image: mysql:8.0.25
+#    hostname: sis-model-db
+#    container_name: sis-model-db
+#    environment:
+#      MYSQL_ROOT_PASSWORD: secret
+#      MYSQL_DATABASE: sis-model
+#      MYSQL_USER: user
+#      MYSQL_PASSWORD: secret
+#    labels:
+#      SERVICE_NAME: sis-model-db
+#      SERVICE_3306_NAME: sis-model-db
+#      SERVICE_33060_NAME: sis-model-db
+#    ports:
+#      - '33060:3306'
+#    healthcheck:
+#      test: "/usr/bin/mysql --user=user --password=secret --execute \"SHOW DATABASES;\""
+#      interval: 3s
+#      timeout: 3s
+#      retries: 10
+#    command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci --default-authentication-plugin=mysql_native_password
+#
+#  mail:
+#    image: mailhog/mailhog
+#    hostname: sis-model-mail
+#    container_name: sis-model-mail
+#    labels:
+#        SERVICE_NAME: sis-model-mail
+#    ports:
+#      - '8025:8025'
+#
+#  redis:
+#    image: redis:6.2.5-alpine3.14
+#    hostname: sis-model-redis
+#    container_name: sis-model-redis
+#    labels:
+#      SERVICE_NAME: sis-model-redis
