@@ -1,5 +1,5 @@
 {
-    "name": "sis-model-dvd",
+    "name": "dvd/sis-model",
     "description": "Lumen sis-model dvd",
     "keywords": ["Dung", "model", "microservice"],
     "license": "MIT",
