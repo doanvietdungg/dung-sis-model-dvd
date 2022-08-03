@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Listeners;
+namespace DungDV\SisModel\App\Listeners;
 
 use App\Events\ExampleEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;

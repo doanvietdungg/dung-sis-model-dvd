@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace DungDV\SisModel\App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

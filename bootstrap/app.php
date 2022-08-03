@@ -1,12 +1,31 @@
 <?php
 
 require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__ . '/../helpers.php';
 
+load_php_file(dirname(__DIR__) . '/database');
+load_php_file(dirname(__DIR__) . '/app');
 (new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
     dirname(__DIR__)
 ))->bootstrap();
 
 date_default_timezone_set(env('APP_TIMEZONE', 'UTC'));
+
+
+/*
+|--------------------------------------------------------------------------
+| Create The Application
+|--------------------------------------------------------------------------
+|
+| Here we will load the environment and create the application instance
+| that serves as the central piece of this framework. We'll use this
+| application as an "IoC" container and router for this framework.
+|
+*/
+
+$app = new Laravel\Lumen\Application(
+    dirname(__DIR__)
+);
 
 /*
 |--------------------------------------------------------------------------
@@ -40,12 +59,12 @@ $app->withEloquent();
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    App\Exceptions\Handler::class
+    DungDV\SisModel\App\Exceptions\Handler::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    App\Console\Kernel::class
+    DungDV\SisModel\App\Console\Kernel::class
 );
 
 /*
@@ -106,10 +125,5 @@ $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 |
 */
 
-$app->router->group([
-    'namespace' => 'App\Http\Controllers',
-], function ($router) {
-    require __DIR__.'/../routes/web.php';
-});
 
 return $app;

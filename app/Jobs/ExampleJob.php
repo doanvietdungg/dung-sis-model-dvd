@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs;
+namespace DungDV\SisModel\App\Jobs;
 
 class ExampleJob extends Job
 {

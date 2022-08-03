@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace DungDV\SisModel\App\Providers;
 
 use Laravel\Lumen\Providers\EventServiceProvider as ServiceProvider;
 
@@ -13,7 +13,7 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         \App\Events\ExampleEvent::class => [
-            \App\Listeners\ExampleListener::class,
+            \DungDV\SisModel\App\Listeners\ExampleListener::class,
         ],
     ];
 

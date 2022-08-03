@@ -1,13 +1,14 @@
 {
-    "name": "dvd/sis-model",
-    "description": "Lumen sis-model dvd",
-    "keywords": ["Dung", "model", "microservice"],
+    "name": "doanvietdung/sis-model-by-dvd",
+    "description": "Lumen framework sis model",
+    "keywords": ["dungdv", "sis-model", "lumen"],
     "license": "MIT",
     "type": "project",
     "require": {
         "php": "^8.0",
         "flipbox/lumen-generator": "^9.1",
-        "laravel/lumen-framework": "^9.0"
+        "laravel/lumen-framework": "^9.0",
+        "vladimir-yuldashev/laravel-queue-rabbitmq": "^12.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -16,9 +17,9 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
-            "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "DungDV\\SisModel\\App\\": "app/",
+            "DungDV\\SisModel\\Database\\Factories\\": "database/factories/",
+            "DungDV\\SisModel\\Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
@@ -34,7 +35,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true

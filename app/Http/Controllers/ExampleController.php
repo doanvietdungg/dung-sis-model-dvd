@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace DungDV\SisModel\App\Http\Controllers;
 
 class ExampleController extends Controller
 {

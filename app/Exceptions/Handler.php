@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace DungDV\SisModel\App\Exceptions;
 
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -33,7 +33,7 @@ class Handler extends ExceptionHandler
      *
      * @throws \Exception
      */
-    public function report(Throwable $exception)
+    public function report(Throwable $exception): void
     {
         parent::report($exception);
     }
@@ -47,7 +47,7 @@ class Handler extends ExceptionHandler
      *
      * @throws \Throwable
      */
-    public function render($request, Throwable $exception)
+    public function render($request, Throwable $exception): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse
     {
         return parent::render($request, $exception);
     }
